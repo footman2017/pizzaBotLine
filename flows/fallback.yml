@@ -1,0 +1,22 @@
+active: true
+volatile: false
+fallback: true
+intents:
+    fallbackIntent:
+        type: text
+        initial: false
+        fallback: true
+states:
+    init:
+        transitions:
+            init:
+                fallback: true
+        action: sorryAction
+        initial: true
+        end: true
+actions:
+    sorryAction:
+        type: text
+        options:
+            text: 'Maaf, Saya tidak mengerti :('
+methods: {}
