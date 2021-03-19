@@ -1,0 +1,34 @@
+order:
+    type: keyword
+    options:
+        keywords:
+            pizzaOrder:
+                - order
+                - pls order
+                - orde pza
+                - pizza please
+quantity:
+    type: regex
+    options:
+        regex: '[1-9]'
+insultNLU:
+    type: keyword
+    options:
+        keywords:
+            insult:
+                - fuck you
+                - you dumb
+                - fuck
+confirmationNLU:
+    type: keyword
+    options:
+        keywords:
+            'yes':
+                - 'yes'
+                - ya
+                - ok
+                - correct
+            'no':
+                - 'no'
+                - 'n'
+                - nope

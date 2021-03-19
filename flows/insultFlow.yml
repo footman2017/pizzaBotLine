@@ -1,0 +1,24 @@
+active: true
+volatile: false
+intents:
+    insultIntent:
+        type: text
+        initial: true
+        fallback: false
+        classifier:
+            nlu: insultNLU
+            match: insult
+states:
+    init:
+        transitions:
+            init:
+                fallback: true
+        action: insultAction
+        initial: true
+        end: true
+actions:
+    insultAction:
+        type: text
+        options:
+            text: MOTHERFUCKER!!
+methods: {}
