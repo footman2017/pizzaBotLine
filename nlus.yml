@@ -23,12 +23,12 @@ confirmationNLU:
     type: keyword
     options:
         keywords:
-            'yes':
-                - 'yes'
+            _yes:
+                - yes
                 - ya
                 - ok
                 - correct
-            'no':
-                - 'no'
-                - 'n'
+            _no:
+                - no
+                - n
                 - nope
