@@ -6,6 +6,7 @@ intents:
         type: text
         initial: false
         fallback: true
+
 states:
     init:
         transitions:
@@ -14,6 +15,7 @@ states:
         action: sorryAction
         initial: true
         end: true
+        
 actions:
     sorryAction:
         type: text

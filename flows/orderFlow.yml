@@ -8,22 +8,26 @@ intents:
         classifier:
             nlu: order
             match: pizzaOrder
+
     pizzaChosen:
         type: data
         initial: false
         fallback: false
         condition: payload.type=="pizza"
+
     reenter:
         type: command
         initial: false
         fallback: false
         condition: content=="reenter"
+
     pizzaQuantity:
         type: text
         initial: false
         fallback: false
         classifier:
             nlu: quantity
+
     confirmation:
         type: text
         initial: false
@@ -31,12 +35,30 @@ intents:
         classifier:
             nlu: confirmationNLU
             match: confirm
+    
+    intent_yes:
+        type: text
+        initial: false
+        fallback: false
+        classifier:
+            nlu: confirmationNLU
+            match: yes
+
+    intent_no:
+        type: text
+        initial: false
+        fallback: false
+        classifier:
+            nlu: confirmationNLU
+            match: no
+
 states:
     init:
         transitions:
             showPizza:
                 condition: intent=="orderTxt"
         initial: true
+
     showPizza:
         transitions:
             pizzaQuantity:
@@ -50,6 +72,7 @@ states:
                 name: pizzaMenu
             -
                 name: pizzaOptions
+
     pizzaQuantity:
         transitions:
             confirmationState:
@@ -60,6 +83,7 @@ states:
             pizzaQuantity:
                 fallback: true
         action: askQuantity
+
     confirmationState:
         transitions:
             confirmationState:
@@ -67,15 +91,18 @@ states:
         action: confirmationAction
         transit:
             context.answer: intent
+
 actions:
     pizzaOptions:
         type: text
         options:
             text: we have Pepperroni and Veggie Lovers
+
     askOptions:
         type: text
         options:
             text: Pilih lurr
+
     pizzaMenu:
         type: template
         options:
@@ -104,12 +131,15 @@ actions:
                             payload:
                                 type: pizza
                                 pizza: Veggie Lovers
+
     askQuantity:
         type: text
         options:
             text: How many pizza do you want? min 1-9
+
     confirmationAction:
         type: text
         options:
             text: do you want to order $(context.pizza)?
+
 methods: {}
