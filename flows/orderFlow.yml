@@ -42,7 +42,7 @@ intents:
         fallback: false
         classifier:
             nlu: confirmationNLU
-            match: yes
+            match: _yes
 
     intent_no:
         type: text
@@ -50,7 +50,7 @@ intents:
         fallback: false
         classifier:
             nlu: confirmationNLU
-            match: no
+            match: _no
 
 states:
     init:
@@ -100,9 +100,9 @@ states:
                 fallback: true
         action:
             - name: sayThanks
-              condition: "context.answer == 'yes'"
+              condition: "context.answer == 'intent_yes'"
             - name: sayCancel
-              condition: "context.answer == 'no'"
+              condition: "context.answer == 'intent_no'"
         end : true
 
 
