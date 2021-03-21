@@ -86,11 +86,25 @@ states:
 
     confirmationState:
         transitions:
+            doneState:
+                fallback: true
             confirmationState:
                 fallback: true
         action: confirmationAction
         transit:
             context.answer: intent
+
+    doneState:
+        transitions:
+            doneState:
+                fallback: true
+        action:
+            - name: sayThanks
+              condition: "context.answer == 'yes'"
+            - name: sayCancel
+              condition: "context.answer == 'no'"
+        end : true
+
 
 actions:
     pizzaOptions:
@@ -141,5 +155,15 @@ actions:
         type: text
         options:
             text: do you want to order $(context.pizza)?
+    
+    sayThanks:
+        type: text
+        options:
+            text: Thank you for your order
+
+    sayCancel:
+        type: text
+        options:
+            text: Di cancel. Ok
 
 methods: {}
